@@ -22,3 +22,26 @@ This document is a repository of information about the data within this Olist Br
 | products | data about the products sold by Olist | product_id  | 32951 |
 
 ---
+
+## Relationships 
+
+### Relational Lookups
+
+| Parent Table | Parent PK | Child Table | Child FK |
+| ----------- | ----------- | ----------- | ----------- |
+| orders | order_id | order_payments | order_id |
+| orders | order_id | order_items | order_id |
+| orders | order_id | order_reviews | order_id |
+| products | product_id | order_items | product_id |
+| sellers | seller_id | order_items | seller_id |
+| customers | customer_id | orders | customer_id |
+
+
+### Non-unique lookups
+
+| Lookup Table | Lookup Column | Referencing Table  | Referencing Column |
+| ----------- | ----------- | ----------- | ----------- |
+| geolocation | zip_code_prefix | customers | customer_zip_code_prefix |
+| geolocation | zip_code_prefix | sellers | seller_zip_code_prefix |
+
+---
