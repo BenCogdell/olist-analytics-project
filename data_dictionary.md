@@ -45,3 +45,20 @@ This document is a repository of information about the data within this Olist Br
 | geolocation | zip_code_prefix | sellers | seller_zip_code_prefix |
 
 ---
+
+## Table Columns
+
+###  Orders Table (olist_orders_dataset)
+
+Contains order lifecycle information including purchase, approval, delivery and estimated delivery dates.
+
+| Column | Type | Description | Additional Info |
+| ----------- | ----------- | ----------- | ----------- |
+| order_id | text | unique identifier of the order | PRIMARY KEY |
+| customer_id | text | key to the customer dataset. Each order has a unique customer_id | FOREIGN KEY (customers)|
+| order_status | text | Reference to the order status (delivered, shipped, etc.) | N/A |
+| order_purchase_timestamp | timestamp | Shows the purchase timestamp | N/A |
+| order_approved_at | timestamp | Shows the payment approval timestamp. | N/A |
+| order_delivered_carrier_date | timestamp | Shows the order posting timestamp. When it was handled to the logistic partner. | N/A |
+| order_delivered_customer_date | timestamp | Shows the actual order delivery date to the customer | N/A |
+| order_estimated_delivery_date | timestamp | Shows the estimated delivery date that was informed to customer at the moment of purchase. | N/A |
