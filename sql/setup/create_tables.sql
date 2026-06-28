@@ -8,9 +8,9 @@
 -- Orders
 -- ==========================================
 
-CREATE TABLE olist_orders_dataset (
+CREATE TABLE orders(
     order_id VARCHAR PRIMARY KEY,
-    customer_id VARCHAR FOREIGN KEY REFERENCES customers.customer_id,
+    customer_id VARCHAR REFERENCES customers.customer_id,
     order_status VARCHAR,
     order_purchase_timestamp TIMESTAMP,
     order_delivered_carrier_date TIMESTAMP,
@@ -22,9 +22,9 @@ CREATE TABLE olist_orders_dataset (
 -- Order Reviews
 -- ==========================================
 
-CREATE TABLE olist_order_reviews_dataset (
+CREATE TABLE order_reviews(
    review_id VARCHAR PRIMARY KEY,
-   order_id VARCHAR FOREIGN KEY REFERENCES orders.order_id,
+   order_id VARCHAR REFERENCES orders.order_id,
    review_score INT,
    review_comment_title VARCHAR,
    review_comment_message VARCHAR,
@@ -36,7 +36,7 @@ CREATE TABLE olist_order_reviews_dataset (
 -- Order Payments
 -- ==========================================
 
-CREATE TABLE olist_order_payments_dataset (
+CREATE TABLE order_payments(
     order_id VARCHAR,
     payment_sequential INT,
     payment_type VARCHAR,
@@ -49,11 +49,11 @@ CREATE TABLE olist_order_payments_dataset (
 -- Order Items
 -- ==========================================
 
-CREATE TABLE olist_order_items_dataset (
+CREATE TABLE order_items(
     order_id VARCHAR,
     order_item_id INT,
-    product_id VARCHAR FOREIGN KEY REFERENCES products.product_id,
-    seller_id VARCHAR FOREIGN KEY REFERENCES sellers.seller_id,
+    product_id VARCHAR REFERENCES products.product_id,
+    seller_id VARCHAR  REFERENCES sellers.seller_id,
     price DECIMAL(10,2),
     freight_value DECIMAL(10,2),
     PRIMARY KEY(order_id, order_item_id)
@@ -63,7 +63,7 @@ CREATE TABLE olist_order_items_dataset (
 -- Customers
 -- ==========================================
 
-CREATE TABLE olist_customers_dataset (
+CREATE TABLE customers(
     customer_id VARCHAR PRIMARY KEY,
     customer_unique_id VARCHAR,
     customer_zip_code_prefix VARCHAR(5),
@@ -75,7 +75,7 @@ CREATE TABLE olist_customers_dataset (
 -- Sellers
 -- ==========================================
 
-CREATE TABLE olist_sellers_dataset (
+CREATE TABLE sellers(
     seller_id VARCHAR PRIMARY KEY,
     seller_zip_code_prefix VARCHAR(5),
     seller_city VARCHAR,
@@ -86,7 +86,7 @@ CREATE TABLE olist_sellers_dataset (
 -- Geolocation
 -- ==========================================
 
-CREATE TABLE olist_geolocation_dataset (
+CREATE TABLE geolocation(
     geolocation_zip_code_prefix VARCHAR(5),
     geolocation_lat FLOAT,
     geolocation_lng FLOAT,
@@ -98,7 +98,7 @@ CREATE TABLE olist_geolocation_dataset (
 -- Products
 -- ==========================================
 
-CREATE TABLE olist_products_dataset (
+CREATE TABLE products(
     product_id VARCHAR PRIMARY KEY,
     product_category_name VARCHAR,
     product_name_length INT,
