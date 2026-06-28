@@ -10,7 +10,7 @@
 
 CREATE TABLE orders(
     order_id VARCHAR PRIMARY KEY,
-    customer_id VARCHAR REFERENCES customers.customer_id,
+    customer_id VARCHAR REFERENCES customers(customer_id),
     order_status VARCHAR,
     order_purchase_timestamp TIMESTAMP,
     order_delivered_carrier_date TIMESTAMP,
@@ -24,7 +24,7 @@ CREATE TABLE orders(
 
 CREATE TABLE order_reviews(
    review_id VARCHAR PRIMARY KEY,
-   order_id VARCHAR REFERENCES orders.order_id,
+   order_id VARCHAR REFERENCES orders(order_id),
    review_score INT,
    review_comment_title VARCHAR,
    review_comment_message VARCHAR,
@@ -52,8 +52,8 @@ CREATE TABLE order_payments(
 CREATE TABLE order_items(
     order_id VARCHAR,
     order_item_id INT,
-    product_id VARCHAR REFERENCES products.product_id,
-    seller_id VARCHAR  REFERENCES sellers.seller_id,
+    product_id VARCHAR REFERENCES products(product_id),
+    seller_id VARCHAR  REFERENCES sellers(seller_id),
     price DECIMAL(10,2),
     freight_value DECIMAL(10,2),
     PRIMARY KEY(order_id, order_item_id)
