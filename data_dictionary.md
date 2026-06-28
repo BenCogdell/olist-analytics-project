@@ -136,7 +136,7 @@ This dataset has information Brazilian zip codes and its lat/lng coordinates.
 
 |Column|Type|Description|Additional Info|
 |-|-|-|-|
-|geolocation_zip_code_prefix|VARCHAR|first 5 digits of zip code|LOOKUP column|
+|geolocation_zip_code_prefix|VARCHAR(5)|first 5 digits of zip code|LOOKUP column|
 |geolocation_lat|FLOAT|latitude||
 |geolocation_lng|FLOAT|longitude||
 |geolocation_city|VARCHAR|city name||
